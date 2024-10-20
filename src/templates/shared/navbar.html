@@ -1,0 +1,158 @@
+<!-- Barre de navigation -->
+
+<nav class="text-sm bg-white border-b border-gray-400 dark:bg-slate-900 dark:text-white px-6 py-4 fixed top-0 w-full z-50 left-0">    
+    
+    <div class="container mx-auto flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-6 w-6" fill="#FF5700">
+                <path d="M0 256C0 114.6 114.6 0 256 0S512 114.6 512 256s-114.6 256-256 256L37.1 512c-13.7 0-20.5-16.5-10.9-26.2L75 437C28.7 390.7 0 326.7 0 256zM349.6 153.6c23.6 0 42.7-19.1 42.7-42.7s-19.1-42.7-42.7-42.7c-20.6 0-37.8 14.6-41.8 34c-34.5 3.7-61.4 33-61.4 68.4l0 .2c-37.5 1.6-71.8 12.3-99 29.1c-10.1-7.8-22.8-12.5-36.5-12.5c-33 0-59.8 26.8-59.8 59.8c0 24 14.1 44.6 34.4 54.1c2 69.4 77.6 125.2 170.6 125.2s168.7-55.9 170.6-125.3c20.2-9.6 34.1-30.2 34.1-54c0-33-26.8-59.8-59.8-59.8c-13.7 0-26.3 4.6-36.4 12.4c-27.4-17-62.1-27.7-100-29.1l0-.2c0-25.4 18.9-46.5 43.4-49.9l0 0c4.4 18.8 21.3 32.8 41.5 32.8zM177.1 246.9c16.7 0 29.5 17.6 28.5 39.3s-13.5 29.6-30.3 29.6s-31.4-8.8-30.4-30.5s15.4-38.3 32.1-38.3zm190.1 38.3c1 21.7-13.7 30.5-30.4 30.5s-29.3-7.9-30.3-29.6c-1-21.7 11.8-39.3 28.5-39.3s31.2 16.6 32.1 38.3zm-48.1 56.7c-10.3 24.6-34.6 41.9-63 41.9s-52.7-17.3-63-41.9c-1.2-2.9 .8-6.2 3.9-6.5c18.4-1.9 38.3-2.9 59.1-2.9s40.7 1 59.1 2.9c3.1 .3 5.1 3.6 3.9 6.5z"/>
+            </svg>
+            <a href="{{ url_for('feed.feedPage') }}" class="text-3xl font-bold text-orange-600">reddit</a>
+        </div>
+
+        <div class="relative ml-20">
+            <span class="absolute left-2 top-1/2 transform -translate-y-1/2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-4 w-4" fill="#5e5e5e">
+                    <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+                </svg>
+            </span>
+            <input type="text" placeholder="Rechercher sur Reddit" class="pl-8 pr-8 py-2 bg-gray-200 rounded-full focus:outline-none focus:border-blue-500 placeholder-gray-500 w-96 lg:w-128">
+        </div>
+        
+
+        <div class="flex items-center space-x-4">
+            {% if user.is_authenticated %}
+                
+            <button class="relative inline-block button-medium button-plain icon items-center justify-center">
+                <span class="flex items-center justify-center">
+                    <svg fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.61 19.872a10.013 10.013 0 0 0 6.51-4.035A9.999 9.999 0 0 0 12.275.264c-1.28-.3-2.606-.345-3.903-.132a10.05 10.05 0 0 0-8.25 8.311 9.877 9.877 0 0 0 1.202 6.491l-1.24 4.078a.727.727 0 0 0 .178.721.72.72 0 0 0 .72.19l4.17-1.193A9.87 9.87 0 0 0 9.998 20c.54 0 1.079-.043 1.612-.128ZM1.558 18.458l1.118-3.69-.145-.24A8.647 8.647 0 0 1 1.36 8.634a8.778 8.778 0 0 1 7.21-7.27 8.765 8.765 0 0 1 8.916 3.995 8.748 8.748 0 0 1-2.849 12.09 8.763 8.763 0 0 1-3.22 1.188 8.68 8.68 0 0 1-5.862-1.118l-.232-.138-3.764 1.076ZM6.006 9a1.001 1.001 0 0 0-.708 1.707A1 1 0 1 0 6.006 9Zm4.002 0a1.001 1.001 0 0 0-.195 1.981 1 1 0 1 0 .195-1.98Zm4.003 0a1.001 1.001 0 1 0 0 2.003 1.001 1.001 0 0 0 0-2.003Z"></path>
+                    </svg>
+                </span>
+                <span class="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 hidden">
+                    <div class="bg-gray-700 text-white rounded-lg p-2 w-48"> <!-- Augmentez la largeur ici -->
+                        <p class="text-xs text-center">Open chat</p>
+                    </div>
+                </span>
+            </button>
+            
+            <a class="relative inline-block no-underline hover:no-underline active:no-underline button-medium pl-14 pr-18 button-plain items-center justify-center" href="{{ url_for('post.create_post') }}">
+                <span class="flex items-center justify-center">
+                    <svg fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 9.375h-8.375V1h-1.25v8.375H1v1.25h8.375V19h1.25v-8.375H19v-1.25Z"></path>
+                    </svg>
+                    <span class="flex items-center gap-1 ml-2 text-sm font-semibold">Create</span>
+                </span>
+                <span class="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 ml-4 hidden">
+                    <div class="bg-gray-700 text-white rounded-lg p-2 w-48"> <!-- Augmentez la largeur ici -->
+                        <p class="text-xs text-center">Create a new post</p>
+                    </div>
+                </span>
+            </a>
+            
+            <button class="relative inline-flex items-center justify-center px-2 button-plain icon">
+                <span class="flex items-center justify-center">
+                    <svg fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 18h1a2 2 0 0 1-4 0h3Zm8-3.792v.673A1.12 1.12 0 0 1 17.883 16H2.117A1.12 1.12 0 0 1 1 14.881v-.673a3.947 3.947 0 0 1 1.738-3.277A2.706 2.706 0 0 0 3.926 8.7V7.087a6.07 6.07 0 0 1 12.138 0l.01 1.613a2.7 2.7 0 0 0 1.189 2.235A3.949 3.949 0 0 1 19 14.208Zm-1.25 0a2.7 2.7 0 0 0-1.188-2.242A3.956 3.956 0 0 1 14.824 8.7V7.088a4.819 4.819 0 1 0-9.638 0v1.615a3.956 3.956 0 0 1-1.738 3.266 2.7 2.7 0 0 0-1.198 2.239v.542h15.5v-.542Z"></path>
+                    </svg>
+                </span>
+                <span class="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 hidden">
+                    <div class="bg-gray-700 text-white rounded-lg p-2 w-48"> <!-- Augmentez la largeur ici -->
+                        <p class="text-xs text-center">Open inbox</p>
+                    </div>
+                </span>
+            </button>
+            
+                  
+            {% else %}
+                <a href="#" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-full hover:bg-gray-300 flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4" fill="#4a5568">
+                        <path d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64 96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16 0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z"/>
+                    </svg>
+                    <span>Télécharger</span>
+                </a>
+
+                <a href="{{ url_for('auth.login') }}" class="bg-orange-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-orange-700">Se connecter</a>
+            {% endif %}
+            
+
+            <div x-data="{ isOpen: false }" class="relative ml-3">
+                <div>
+                    {% if user.is_authenticated %}
+                        <button @click="isOpen = !isOpen" type="button" class="p-1 relative flex rounded-full hover:bg-gray-300 text-sm focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 border-0" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                            <span class="absolute -inset-1.5"></span>
+                            <span class="sr-only">Open user menu</span>
+                            <img src="{{ url_for('static', filename='img/' + user.photo_profil) }}" class="h-8 w-8 rounded-full" alt="">
+                            <span class="m-1 bg-online absolute bottom-0 rounded-full border-solid border-green-500 bg-green-500 right-0 border w-2 h-2 border-2"></span>                            
+                        </button>
+                    {% else %}
+                        <button @click="isOpen = !isOpen" type="button" class="relative flex p-2 rounded-full hover:bg-gray-300 text-sm focus:outline-none  focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 border-0" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                            <span class="absolute -inset-1.5"></span>
+                            <span class="sr-only">Open user menu</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 rounded-full" fill="#8c8c8c">
+                                <path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/>
+                            </svg>
+                        </button>
+                    {% endif %}
+                </div>
+
+                <div x-show="isOpen" @click.away="isOpen = false" class="absolute right-0 z-10 mt-2 w-72 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-transform duration-300 transform" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    {% if user.is_authenticated %}
+                        <a href="#" class="flex justify-between relative px-4 gap-2 text-gray-700 hover:text-gray-900 active:bg-gray-200 hover:bg-gray-100 cursor-pointer py-2 outline-none no-underline">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 inline-block rounded-full relative mb-0">
+                                    <img src="{{ url_for('static', filename='img/' + user.photo_profil) }}" alt="" class="max-w-full rounded-full">
+                                    <span class="bg-online absolute bottom-0 rounded-full border-solid border-green-500 bg-green-500 right-0 border w-2 h-2 border-2"></span>
+                                </div>
+                                <a href="{{ url_for('user_session.see_profile') }}">
+                                <div class="flex flex-col justify-center min-w-0">
+                                    
+                                    <span class="text-sm px-2">View Profile</span>
+                                    <span class="text-xs text-gray-600  px-2">{{ user.username }}</span>
+                                
+                                </div>
+                            </a>
+                            </div>
+                            <span class="flex items-center">
+                                <!-- Ajoutez votre icône ou contenu supplémentaire ici -->
+                            </span>
+                        </a>
+                        <a href="{{ url_for('auth.logout') }}"  class="flex items-center mt-2 px-4 py-3 text-sm text-gray-700 transition-transform hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">
+                            <div class="flex items-center px-2">
+                                <svg fill="currentColor" height="20" icon-name="logout-outline" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg" class="text-gray-500 transition duration-200 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white mr-1" aria-hidden="true">
+                                    <path d="M11.991 10.625H1v-1.25h10.991l-1.933-1.933.884-.884 3 3a.624.624 0 0 1 0 .884l-3 3-.884-.884 1.933-1.933ZM15.375 1h-9.75A2.629 2.629 0 0 0 3 3.625v.792h1.25v-.792A1.377 1.377 0 0 1 5.625 2.25h9.75a1.377 1.377 0 0 1 1.375 1.375v12.75a1.377 1.377 0 0 1-1.375 1.375h-9.75a1.377 1.377 0 0 1-1.375-1.375v-.792H3v.792A2.63 2.63 0 0 0 5.625 19h9.75A2.63 2.63 0 0 0 18 16.375V3.625A2.63 2.63 0 0 0 15.375 1Z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex flex-col justify-center min-w-0">
+                                <span class="text-sm ">Log Out</span>
+                            </div>
+                        </a>
+                                                
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" class="flex items-center px-4 py-2 text-sm text-gray-700 transition-transform hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 text-gray-500 transition duration-200 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white mr-2" aria-hidden="true" fill="currentColor">
+                                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
+                            </svg>
+                            Se connecter/S'inscrire
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 transition-transform hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4 h-4 text-gray-500 transition duration-200 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white mr-2" aria-hidden="true" fill="currentColor">
+                                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path d="M0 55.2V426c0 12.2 9.9 22 22 22c6.3 0 12.4-2.7 16.6-7.5L121.2 346l58.1 116.3c7.9 15.8 27.1 22.2 42.9 14.3s22.2-27.1 14.3-42.9L179.8 320H297.9c12.2 0 22.1-9.9 22.1-22.1c0-6.3-2.7-12.3-7.4-16.5L38.6 37.9C34.3 34.1 28.9 32 23.2 32C10.4 32 0 42.4 0 55.2z"/>
+                            </svg>
+                            Faire de la publicité sur reddit
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 transition-transform hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 text-gray-500 transition duration-200 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white mr-2" aria-hidden="true" fill="currentColor">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                    <path d="M12 3c-3.31 0-6 2.69-6 6v2H4v10h16V11h-2V9c0-3.31-2.69-6-6-6zm4 8h-8v-2c0-2.21 1.79-4 4-4s4 1.79 4 4v2z"/>
+                                </svg>
+                            Découvrir les avatars de la collection
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

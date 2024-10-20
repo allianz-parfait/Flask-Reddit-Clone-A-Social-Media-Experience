@@ -1,0 +1,30 @@
+# Environnement virtuel
+venv/
+env/
+.venv/
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Configurations sensibles
+*.env
+instance/config.py
+
+# Fichiers journaux
+*.log
+
+# Certificats SSL locaux
+certs/
+
+# Fichiers spécifiques aux IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers temporaires
+*.pid
+*.swp

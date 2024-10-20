@@ -1,0 +1,25 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+body{
+ 
+    font-family: "Questrial", sans-serif;
+    font-weight: 400;
+  
+} */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+ 
+    font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  
+}
+.custom-purple {
+  background-color: #59405C;
+}
+.custom-purple:hover {
+  background-color: #463046; /* Une nuance plus foncée pour l'effet de survol */
+}
+.custom-focus:focus {
+  outline: none;
+  border-color: #9d4aa8;
+  box-shadow: 0 0 0 2px #8e7a91; /* Ici, j'utilise box-shadow pour simuler focus:ring */
+}

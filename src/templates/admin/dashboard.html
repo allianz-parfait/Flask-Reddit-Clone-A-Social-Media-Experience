@@ -1,0 +1,64 @@
+{% extends "layouts/base.admin.html" %}
+    
+{% block content %}
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-3xl font-semibold">Manage Users</h1>
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add User</button>
+    </div>
+
+    <!-- User table -->
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <table class="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th class="px-6 py-3 border-b-2 border-gray-300 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+              Name
+            </th>
+            <th class="px-6 py-3 border-b-2 border-gray-300 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+              Email
+            </th>
+            <th class="px-6 py-3 border-b-2 border-gray-300 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+              Role
+            </th>
+            <th class="px-6 py-3 border-b-2 border-gray-300 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <tr id="user-{{ user.id }}">
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <div class="flex items-center">
+                  <div class="text-sm leading-5 font-medium text-gray-900">{{ user.firstname | capitalize }} {{ user.lastname | capitalize }}</div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <div class="text-sm leading-5 text-gray-900">{{ user.email }}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                {% set role = "User" %}
+                <div class="text-sm leading-5 text-gray-900">{% if user.username[:2] == "u/" %} {{ role }} {% endif %}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
+                <button class="text-orange-600 hover:text-orange-900 px-2 py-1"><a href="{{ url_for('admin.edit_user', user_id=user.id) }}">Edit</a></button>
+                <form action="{{ url_for('admin.remove_user', user_id=user.id) }}" method="post" class="delete-form" data-user-id="{{ user.id }}" style="display:inline;">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button type="submit" class="text-red-600 hover:text-red-900 px-2 py-1 delete-btn">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  {% endblock content %}
+
+
+{% block javascripts %}
+
+  <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+  
+{% endblock javascripts %}

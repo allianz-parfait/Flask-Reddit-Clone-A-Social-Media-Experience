@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Reddit{% endblock title %}</title>
+    <!-- Ajoutez vos liens vers les feuilles de style CSS et les scripts JavaScript ici -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+{% block style %}
+    
+{% endblock style %}
+
+<body class="bg-white dark:bg-slate-900">
+
+    <div class="container mx-auto px-4 flex">
+        {% include "shared/navbar.html" %}
+        {% include "shared/sidebar.html" %}
+        
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+    {% block javascripts %}
+
+    {% endblock javascripts %}
+
+    
+
+</body>
